@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
+  </script>
+    <script src="//apis.google.com/js/platform.js?onload=start"> </script>
+</head>
+<body style="background-color: lightgray">
+<div class="header" >
+<div class="content">
+     <span class="header-pos"  > <h2 ><a href="/" class="catelog" >Catelog App</a></h2></span>
+    <span class="signin-pos" >
+        {% if user=="NON"  %}
+<div id="signInButton">
+          <span class="g-signin"
+            data-scope="openid email"
+            data-clientid="138425978637-c4qn4jtv7r3uj8o7pgff1i0b5f160p2t.apps.googleusercontent.com"
+            data-redirecturi="postmessage"
+            data-accesstype="offline"
+            data-cookiepolicy="single_host_origin"
+            data-callback="signInCallback"
+            data-approvalprompt="force">
+          </span>
+        </div>
+{% else %}
+<button type="button" class="btn btn-default" ><a href="/gdisconnect" >Logout</a></button>
+{% endif %}
+
+    </span>
+</div>
+</div>
+<br>
+<br>
+<div class="content" >
+<div class="container-fluid contentbox">
+
+<form action="/itemform" method="post">
+
+
+    NAME:<br>
+    <div class="input-group">
+        <input class="form-control" type="text" name="item_name" >
+    </div><br><br>
+    Decription:<br>
+    <div class="input-group">
+    <textarea class="form-control" name="description" placeholder="description" cols="60" rows="3" charswidth="23" style="resize: none;border-radius:4px; "></textarea>
+    </div>
+    <br><br>
+
+    Category:<br>
+<div class="input-group">
+    <select class="form-control" name="category">
+        {% for row in results %}
+  <option value="{{row[1]}}">{{row[1]}}</option>
+        {% endfor%}
+
+
+
+</select>
+</div>
+    <br>
+    <br>
+<button type="submit" class="btn btn-default">ADD</button>
+</form>
+
+</div>
+</div>
+<script>
+function signInCallback(authResult) {
+    alert("started");
+  if (authResult['code']) {
+    // Hide the sign-in button now that the user is authorized
+    $('#signinButton').attr('style', 'display: none');
+    // Send the one-time-use code to the server, if the server responds, write a 'login successful' message to the web page and then redirect back to the main restaurants page
+   alert("started2");
+    $.ajax({
+      type: 'POST',
+      url: '/gconnect?state={{STATE}}',
+      processData: false,
+      data: authResult['code'],
+      contentType: 'application/octet-stream; charset=utf-8',
+      success: function(result) {
+        // Handle or verify the server response if necessary.
+        if (result) {
+
+         setTimeout(function() {
+
+         window.location.href = "/";
+         //alert("brother you sign in");
+         }, 5000);
+
+      } else if (authResult['error']) {
+    console.log('There was an error: ' + authResult['error']);
+  } else {
+        $('#result').html('Failed to make a server-side call. Check your configuration and console.');
+         }
+      }
+
+  }); } }
+</script>
+</body>
+</html>

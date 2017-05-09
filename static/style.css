@@ -1,0 +1,55 @@
+.header{
+    width: 100%;
+    background-color: navy;
+    height: 50px;
+    color: white;
+}
+.catelog{
+    color:white ;
+    font-weight: bold;
+}
+.catelog:hover{
+    color:white;
+    text-decoration: none;
+}
+.header-pos{
+    float: left;
+    display: inline;
+    top:-10px;
+    position: relative;
+}
+.signin-pos{
+    display: inline;
+    float:right;
+    top:10px;
+    position: relative;
+}
+.content{
+    width:65%;
+    margin:auto;
+}
+.contentbox{
+    background-color: white;
+    padding: 30px;
+    border-radius:5px;
+}
+.heading{
+    color:navy;
+    font-weight: bold;
+}
+.list{
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+a:hover{
+    text-decoration: none;
+    color: black;
+}
+a{
+    color: black;
+}
+.textcolor{
+    color: red;
+
+}
