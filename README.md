@@ -25,5 +25,5 @@
 6. type "python item_catalog.py" to start the server.
 
 ### Open in a webpage
-1. Now you can open in a webpage by going to either:
+1. Now you can open in a webpage by going to :
     http://localhost:5000
