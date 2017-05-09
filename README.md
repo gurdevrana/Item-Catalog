@@ -21,8 +21,8 @@
 2. The vagrant machine will install.<br>
 3. Once it's complete, type vagrant ssh to login to the VM.
 4. In the vm, cd /vagrant
-5. type "pyhon install_db.py" this will create the database with the categories defined in that script.
-6. type "python item_catalog.py" to start the server.
+5. type "pyhon database_setup.py" this will create the database with the categories defined in that script.
+6. type "python main.py" to start the server.
 
 ### Open in a webpage
 1. Now you can open in a webpage by going to :
