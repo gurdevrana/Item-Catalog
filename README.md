@@ -21,7 +21,7 @@
 2. The vagrant machine will install.<br>
 3. Once it's complete, type vagrant ssh to login to the VM.
 4. In the vm, cd /vagrant
-5. type "pyhon database_setup.py" this will create the database with the categories defined in that script.Please Note SQLite database is used here.SQLite database is inbuild with python.
+5. type "pyhon database_setup.py" this will create the database with the categories defined in that script.Please Note postgreSQL database is used here.install it with "sudo apt-get install postgresql" command.
 6. type "python main.py" to start the server.
 
 ### Open in a webpage
